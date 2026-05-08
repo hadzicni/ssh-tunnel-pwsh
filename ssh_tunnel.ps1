@@ -359,7 +359,7 @@ function Start-Tunnel($profile) {
             Write-Host -NoNewline $time -ForegroundColor Yellow
             Write-Host -NoNewline " | " -ForegroundColor DarkGray
             Write-Host -NoNewline ("localhost:{0}" -f $profile.LocalPort) -ForegroundColor Cyan
-            Write-Host -NoNewline (" " * 20)
+            Write-Host -NoNewline (" ")
 
             Start-Sleep 1
         }
