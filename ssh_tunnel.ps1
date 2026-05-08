@@ -253,6 +253,35 @@ function Delete-Profile {
 }
 
 # =========================================================
+# ABOUT
+# =========================================================
+function Show-About {
+
+    Clear-Host
+    Show-Header
+
+    Write-Host "About" -ForegroundColor Yellow
+    Write-Host "────────────────────────────────────────────"
+    Write-Host ""
+
+    Write-Host "SSH Tunnel Manager" -ForegroundColor Cyan
+    Write-Host "Version : 1.0" -ForegroundColor Gray
+    Write-Host "Author  : Nikola Hadzic" -ForegroundColor Gray
+    Write-Host ""
+
+    Write-Host "Features:" -ForegroundColor Yellow
+    Write-Host "  • SSH Port Forwarding"
+    Write-Host "  • Saved Profiles"
+    Write-Host "  • Quick Connect"
+    Write-Host "  • Background Mode"
+    Write-Host ""
+
+    Write-Host "Built with PowerShell" -ForegroundColor DarkGray
+
+    Read-Host "`nPress Enter to continue"
+}
+
+# =========================================================
 # START TUNNEL
 # =========================================================
 function Start-Tunnel($profile) {
@@ -391,7 +420,8 @@ function Show-Menu {
     Write-Host "│  [2] Quick Connect                   │" -ForegroundColor White
     Write-Host "│  [3] Create Profile                  │" -ForegroundColor White
     Write-Host "│  [4] Delete Profile                  │" -ForegroundColor White
-    Write-Host "│  [5] Exit                            │" -ForegroundColor White
+    Write-Host "│  [5] About                           │" -ForegroundColor White
+    Write-Host "│  [6] Exit                            │" -ForegroundColor White
     Write-Host "└──────────────────────────────────────┘" -ForegroundColor DarkGray
     Write-Host ""
 }
@@ -432,6 +462,10 @@ while ($true) {
         }
 
         "5" {
+            Show-About
+        }
+
+        "6" {
             break
         }
 
