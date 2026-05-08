@@ -1,0 +1,74 @@
+[
+  {
+    "Name": "Proxmox VE 01 Homelab",
+    "User": "hadzicni",
+    "Server": "217.160.47.213",
+    "LocalPort": "8006",
+    "RemoteIP": "192.168.88.10",
+    "RemotePort": "8006",
+    "Key": ""
+  },
+   {
+    "Name": "Proxmox VE 02 Homelab",
+    "User": "hadzicni",
+    "Server": "217.160.47.213",
+    "LocalPort": "8007",
+    "RemoteIP": "192.168.88.11",
+    "RemotePort": "8006",
+    "Key": ""
+  },
+   {
+    "Name": "Portainer Homelab",
+    "User": "hadzicni",
+    "Server": "217.160.47.213",
+    "LocalPort": "9000",
+    "RemoteIP": "192.168.88.20",
+    "RemotePort": "9000",
+    "Key": ""
+  },
+  {
+    "Name": "Grafana Homelab",
+    "User": "hadzicni",
+    "Server": "217.160.47.213",
+    "LocalPort": "3000",
+    "RemoteIP": "192.168.88.40",
+    "RemotePort": "3000",
+    "Key": ""
+  },
+  {
+    "Name": "MikroTik Router Homelab",
+    "User": "hadzicni",
+    "Server": "217.160.47.213",
+    "LocalPort": "1234",
+    "RemoteIP": "192.168.88.1",
+    "RemotePort": "80",
+    "Key": ""
+  },
+  {
+    "Name": "Harbor Registry Homelab",
+    "User": "hadzicni",
+    "Server": "217.160.47.213",
+    "LocalPort": "4674",
+    "RemoteIP": "192.168.88.21",
+    "RemotePort": "80",
+    "Key": ""
+  },
+   {
+    "Name": "OpenWebUI Homelab",
+    "User": "hadzicni",
+    "Server": "217.160.47.213",
+    "LocalPort": "5477",
+    "RemoteIP": "192.168.88.28",
+    "RemotePort": "3000",
+    "Key": ""
+  },
+   {
+    "Name": "Uptime Kuma Homelab",
+    "User": "hadzicni",
+    "Server": "217.160.47.213",
+    "LocalPort": "3249",
+    "RemoteIP": "192.168.88.40",
+    "RemotePort": "3001",
+    "Key": ""
+  }
+]
