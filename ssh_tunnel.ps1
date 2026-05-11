@@ -185,11 +185,16 @@ function Select-Profile {
 
     Write-Host ""
 
-    $index = Read-Host "Select profile"
+	$index = Read-Host "Select profile"
 
-    if ($index -match "^\d+$" -and $index -lt $profiles.Count) {
-        return $profiles[$index]
-    }
+	if ($index -match "^\d+$") {
+
+		$index = [int]$index
+
+		if ($index -ge 0 -and $index -lt $profiles.Count) {
+			return $profiles[$index]
+		}
+	}
 
     Write-Host ""
     Write-Host "Invalid selection." -ForegroundColor Red
@@ -229,19 +234,30 @@ function Delete-Profile {
 
     Write-Host ""
 
-    $index = Read-Host "Select profile"
+	$index = Read-Host "Select profile"
 
-    if ($index -match "^\d+$" -and $index -lt $profiles.Count) {
+	if ($index -match "^\d+$") {
 
-        $profiles = $profiles | Where-Object {
-            $_ -ne $profiles[$index]
-        }
+		$index = [int]$index
 
-        Save-Profiles $profiles
+		if ($index -ge 0 -and $index -lt $profiles.Count) {
 
-        Write-Host ""
-        Write-Host "Profile deleted." -ForegroundColor Yellow
-    }
+			$profiles = $profiles | Where-Object {
+				$_ -ne $profiles[$index]
+			}
+
+			Save-Profiles $profiles
+
+			Write-Host ""
+			Write-Host "Profile deleted." -ForegroundColor Yellow
+		}
+
+		else {
+
+			Write-Host ""
+			Write-Host "Invalid selection." -ForegroundColor Red
+		}
+	}
 
     else {
 
