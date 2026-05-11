@@ -8,7 +8,7 @@
     "RemotePort": "8006",
     "Key": ""
   },
-   {
+  {
     "Name": "Proxmox VE 02 Homelab",
     "User": "hadzicni",
     "Server": "217.160.47.213",
@@ -17,7 +17,7 @@
     "RemotePort": "8006",
     "Key": ""
   },
-   {
+  {
     "Name": "Portainer Homelab",
     "User": "hadzicni",
     "Server": "217.160.47.213",
@@ -53,7 +53,16 @@
     "RemotePort": "80",
     "Key": ""
   },
-   {
+  {
+    "Name": "Authentik Homelab",
+    "User": "hadzicni",
+    "Server": "217.160.47.213",
+    "LocalPort": "2398",
+    "RemoteIP": "192.168.88.22",
+    "RemotePort": "9000",
+    "Key": ""
+  },
+  {
     "Name": "OpenWebUI Homelab",
     "User": "hadzicni",
     "Server": "217.160.47.213",
@@ -62,7 +71,16 @@
     "RemotePort": "3000",
     "Key": ""
   },
-   {
+  {
+    "Name": "SearXNG Homelab",
+    "User": "hadzicni",
+    "Server": "217.160.47.213",
+    "LocalPort": "2304",
+    "RemoteIP": "192.168.88.28",
+    "RemotePort": "8080",
+    "Key": ""
+  },
+  {
     "Name": "Uptime Kuma Homelab",
     "User": "hadzicni",
     "Server": "217.160.47.213",
