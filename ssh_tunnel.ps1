@@ -309,20 +309,78 @@ function Start-Tunnel($profile) {
     Write-Host ""
 
     $url = "http://localhost:$($profile.LocalPort)"
+	
+	Write-Host "Authentication Method" -ForegroundColor Yellow
+	Write-Host "────────────────────────────────────────────"
+	Write-Host ""
+	Write-Host "[1] Public Key"
+	Write-Host "[2] Password"
+	Write-Host ""
 
-    $sshArgs = @(
-        "-N"
-        "-T"
-        "-o", "ServerAliveInterval=60"
-        "-o", "ServerAliveCountMax=3"
-        "-L", "$($profile.LocalPort):$($profile.RemoteIP):$($profile.RemotePort)"
-    )
+	$authMethod = Read-Host "Select method"
 
-    if ($profile.Key) {
-        $sshArgs += @("-i", $profile.Key)
-    }
+	# =====================================================
+	# PUBLIC KEY AUTH
+	# =====================================================
 
-    $sshArgs += "$($profile.User)@$($profile.Server)"
+	if ($authMethod -eq "1") {
+
+		$exe = "ssh"
+
+		$sshArgs = @(
+			"-N"
+			"-T"
+			"-o", "ServerAliveInterval=60"
+			"-o", "ServerAliveCountMax=3"
+			"-L", "$($profile.LocalPort):$($profile.RemoteIP):$($profile.RemotePort)"
+		)
+
+		if ($profile.Key) {
+			$sshArgs += @("-i", $profile.Key)
+		}
+
+		$sshArgs += "$($profile.User)@$($profile.Server)"
+	}
+
+	# =====================================================
+	# PASSWORD AUTH
+	# =====================================================
+
+	elseif ($authMethod -eq "2") {
+
+		$plainPassword = Read-Host "SSH Password"
+
+		if (-not (Get-Command "plink.exe" -ErrorAction SilentlyContinue)) {
+
+			Write-Host ""
+			Write-Host "plink.exe not found." -ForegroundColor Red
+			Write-Host "Please install PuTTY first." -ForegroundColor Yellow
+
+			Read-Host "`nPress Enter to continue"
+			return
+		}
+
+		$exe = "plink.exe"
+
+		$sshArgs = @(
+			"-N"
+			"-batch"
+			"-no-antispoof"
+			"-P", "22"
+			"-L", "$($profile.LocalPort):$($profile.RemoteIP):$($profile.RemotePort)"
+			"-pw", $plainPassword
+			"$($profile.User)@$($profile.Server)"
+		)
+	}
+
+	else {
+
+		Write-Host ""
+		Write-Host "Invalid authentication method." -ForegroundColor Red
+
+		Read-Host "`nPress Enter to continue"
+		return
+	}
 
     $mode = Read-Input "Run in background? (y/N)"
 
@@ -331,11 +389,19 @@ function Start-Tunnel($profile) {
     # =====================================================
     if ($mode -eq "y") {
 
-        $process = Start-Process `
-            -FilePath "ssh" `
-            -ArgumentList $sshArgs `
-            -NoNewWindow `
-            -PassThru
+        $startParams = @{
+			FilePath    = $exe
+			ArgumentList = $sshArgs
+			PassThru    = $true
+		}
+
+		if ($exe -eq "ssh") {
+			$startParams.NoNewWindow = $true
+		}
+
+		$process = Start-Process @startParams
+
+		$plainPassword = $null
 
         Start-Sleep 1
 
@@ -362,11 +428,19 @@ function Start-Tunnel($profile) {
     # =====================================================
     # FOREGROUND MODE
     # =====================================================
-    $process = Start-Process `
-        -FilePath "ssh" `
-        -ArgumentList $sshArgs `
-        -NoNewWindow `
-        -PassThru
+    $startParams = @{
+		FilePath    = $exe
+		ArgumentList = $sshArgs
+		PassThru    = $true
+	}
+
+	if ($exe -eq "ssh") {
+		$startParams.NoNewWindow = $true
+	}
+
+	$process = Start-Process @startParams
+
+	$plainPassword = $null
 
     Start-Sleep 1
 
