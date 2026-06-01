@@ -6,7 +6,7 @@
 
 <br />
 
-Short, clear description of the project in one sentence.
+A simple SSH tunnel implementation in PowerShell.
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](#license)
 [![Status](https://img.shields.io/badge/status-active-success.svg)](#overview)
