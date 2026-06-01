@@ -83,7 +83,7 @@ No dependencies are required for this project.
 ### 3. Start the project
 
 ```bash
-.\ssh_tunnel.ps1
+.\SSH-Tunnel.ps1
 ```
 
 ## Configuration
@@ -108,15 +108,15 @@ The project can be configured using the `profiles.json` file. Here are the avail
 
 ## Usage
 
-To create an SSH tunnel, run the `ssh_tunnel.ps1` script and select the desired profile from the list. The script will establish the tunnel based on the configuration provided in the `profiles.json` file.
+To create an SSH tunnel, run the `SSH-Tunnel.ps1` script and select the desired profile from the list. The script will establish the tunnel based on the configuration provided in the `profiles.json` file.
 
 ## Development
 
-Simply edit the `ssh_tunnel.ps1` script and make your changes. You can test your changes by running the script locally.
+Simply edit the `SSH-Tunnel.ps1` script and make your changes. You can test your changes by running the script locally.
 
 ## Build and Deployment
 
-This project does not require a build process. To deploy, simply copy the `ssh_tunnel.ps1` script and the `profiles.json` configuration file to the target environment.
+This project does not require a build process. To deploy, simply copy the `SSH-Tunnel.ps1` script and the `profiles.json` configuration file to the target environment.
 
 ## Security
 
