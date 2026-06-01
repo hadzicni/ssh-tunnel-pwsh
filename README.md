@@ -83,7 +83,7 @@ No dependencies are required for this project.
 ### 3. Start the project
 
 ```bash
-.\ssh-tunnel.ps1
+.\ssh_tunnel.ps1
 ```
 
 ## Configuration
